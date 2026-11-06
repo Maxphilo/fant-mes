@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Instrument_Sans } from "next/font/google";
 import "./globals.css";
+import { Pied } from "./components/Pied";
 
 const titre = Fraunces({
   subsets: ["latin"],
@@ -42,7 +43,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className={`${titre.variable} ${texte.variable}`}>
-      <body className="font-texte antialiased">{children}</body>
+      <body className="font-texte antialiased">
+        {children}
+        <Pied />
+      </body>
     </html>
   );
 }

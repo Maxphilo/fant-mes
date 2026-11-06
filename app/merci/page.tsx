@@ -37,7 +37,7 @@ export default async function Merci({
           </h1>
           <p className="mt-6 text-lg leading-relaxed">
             Voici la suite, en une seule action : envoie-nous ton relevé
-            bancaire par e-mail
+            bancaire par e-mail (l’export de tes opérations, en masquant ton IBAN et ton solde)
             {contact ? (
               <>
                 {" "}à{" "}
