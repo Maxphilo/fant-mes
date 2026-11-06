@@ -16,7 +16,12 @@ const benefices = [
   },
 ];
 
-export default function Accueil() {
+export default function Accueil({
+  searchParams,
+}: {
+  searchParams: { paiement?: string };
+}) {
+  const paiement = searchParams.paiement;
   return (
     <main className="mx-auto max-w-xl px-5 pb-28 pt-10">
       <p className="font-titre text-xl font-bold text-sapin">Fantômes</p>
@@ -34,11 +39,8 @@ export default function Accueil() {
         href="#formules"
         className="mt-8 flex h-14 w-full items-center justify-center rounded-lg bg-brule text-lg font-bold text-white focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-encre"
       >
-        Commencer, c’est gratuit
+        Voir les formules
       </a>
-      <p className="mt-3 text-sm text-encre/70">
-        Pas de carte bancaire pour commencer.
-      </p>
 
       <section className="mt-16 border-t-2 border-dotted border-encre/40 pt-10">
         <p className="text-base">Trois abonnements oubliés à 8 € par mois, c’est</p>
@@ -112,12 +114,38 @@ export default function Accueil() {
           Écris-nous un e-mail dans les 14 jours, sans justification : tu es
           remboursé sous 5 jours ouvrés.
         </p>
-        <p className="mt-3 text-sm text-encre/70">
-          Sans engagement, résiliable à tout moment.
-        </p>
 
-        <p className="mt-6 rounded-lg bg-papier p-4 text-sm leading-relaxed">
-          Le bouton de paiement arrive à l’étape suivante.
+        {paiement === "annule" && (
+          <p role="alert" className="mt-6 rounded-lg bg-papier p-4 text-sm font-bold">
+            Paiement annulé : rien n’a été débité. Tu peux réessayer quand tu veux.
+          </p>
+        )}
+        {paiement === "erreur" && (
+          <p role="alert" className="mt-6 rounded-lg bg-papier p-4 text-sm font-bold">
+            Le paiement n’a pas pu démarrer. Réessaie dans un instant : rien n’a été débité.
+          </p>
+        )}
+
+        <form action="/api/checkout" method="POST" className="mt-6">
+          <input type="hidden" name="formule" value="audit" />
+          <button
+            type="submit"
+            className="flex h-14 w-full items-center justify-center rounded-lg bg-brule text-lg font-bold text-white focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-encre"
+          >
+            Prendre l’audit à 19 €
+          </button>
+        </form>
+        <form action="/api/checkout" method="POST" className="mt-3">
+          <input type="hidden" name="formule" value="abo" />
+          <button
+            type="submit"
+            className="flex h-14 w-full items-center justify-center rounded-lg border-2 border-encre bg-transparent text-lg font-bold text-encre focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-encre"
+          >
+            S’abonner à 9 € par mois
+          </button>
+        </form>
+        <p className="mt-3 text-center text-sm text-encre/70">
+          Sans engagement, résiliable à tout moment.
         </p>
       </section>
     </main>
