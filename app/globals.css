@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body { background: #F6F1E7; color: #1B1A17; }
+
+.pointille {
+  text-decoration: underline dotted;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 8px;
+}
