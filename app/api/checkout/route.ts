@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
-import { PRIX, Formule } from "@/lib/prix";
+import { prixPour } from "@/lib/prix";
 
 export const dynamic = "force-dynamic";
 
@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
     if (!cle) return retour("erreur");
 
     const stripe = new Stripe(cle);
-    const choix = PRIX[formule as Formule];
+    const choix = prixPour(formule, cle);
 
     const session = await stripe.checkout.sessions.create({
       mode: choix.mode,
