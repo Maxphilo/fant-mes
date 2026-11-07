@@ -19,6 +19,13 @@ export default function Page() {
         nous envoies par e-mail. Nous te recommandons de masquer ton IBAN et ton
         solde avant l’envoi : seules les lignes de transactions nous servent.
       </p>
+      <p>
+        Pour repérer les prélèvements réguliers, nous utilisons un outil
+        d’intelligence artificielle (Claude, édité par Anthropic) auquel
+        nous soumettons les lignes de transactions. Aucune décision à ton
+        sujet n’est prise automatiquement : nous relisons chaque audit avant de
+        te l’envoyer.
+      </p>
 
       <H>Pourquoi</H>
       <p>
@@ -29,14 +36,19 @@ export default function Page() {
       <H>Combien de temps</H>
       <p>
         Ton relevé est utilisé uniquement pour ton audit, puis supprimé dans les
-        7 jours suivant la livraison. Les données de facturation sont conservées
+        7 jours suivant la livraison, et la conversation d’analyse correspondante
+        est supprimée en même temps. L’éditeur de l’outil d’IA peut conserver
+        temporairement les données supprimées, selon sa propre politique. Les
+        données de facturation sont conservées
         10 ans, comme la loi l’impose.
       </p>
 
       <H>Qui y accède</H>
       <p>
-        Stripe (paiement), Vercel (hébergement du site) et Google (messagerie
-        Gmail, par laquelle transite ton relevé). Ces prestataires peuvent
+        Stripe (paiement), Vercel (hébergement du site), Google (messagerie
+        Gmail, par laquelle transite ton relevé) et Anthropic (outil d’IA
+        d’analyse). Nous avons désactivé l’utilisation de nos conversations
+        pour l’entraînement des modèles. Ces prestataires peuvent
         traiter des données hors de l’Union européenne, dans le cadre de
         garanties prévues par le RGPD. Nous ne vendons jamais tes données.
       </p>
